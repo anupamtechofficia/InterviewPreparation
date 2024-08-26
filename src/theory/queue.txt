@@ -1,0 +1,30 @@
+https://www.upsolver.com/blog/kafka-versus-rabbitmq-architecture-performance-use-case
+
+https://www.cloudamqp.com/blog/when-to-use-rabbitmq-or-apache-kafka.html
+
+
+rabbit MQ/SQS/SNS
+  -> IS IS PUSH MODEL
+  -> MESSAGE IS SEND BY PRODUCER TO A EXCAHNGE AND EXCAHNGE PUSH MESSGAE TO A QUEUE
+  -> EVERY MESSAGE HAS A ROUTING KEY WHICH HELPS THE EXCAHNGE TO DECIDE WHICH QUEUE
+  -> We can send same message to multiple queue but they need to subscribe to same EXCAHNGE
+  -> We can use fanout exchange also to send same message to mulTiple queue.
+  -> IT is designed as vertical scaling
+  -> RabbitMQ supports priority in message
+
+
+ KAFKA
+    -> IT IS A PULL MODEL
+    -> USE ZOOKEEPER TO MAINTAIN THE OFFSET OF THE MESSAGE FO EACH PARTITION
+    -> NO OF CONSUMER SHOULD BE LESS OR EQUAL TO THE PARTITION OTHERWISE THE REMANING CONSUME WILL BE UNUSED
+    -> EACH INSTANCE OF A SERVICE IS CONSIDERED AS ONE CONSUMER
+    -> CONSUMER GROUP IS A GROUP OF CONSUMER THAT LISTEN TO A GROUP OF SPECIFIED PARTITION
+    -> THE MESSAGE ARE SORTED IN EACH PARTITION
+    -> HERE WE DON'T NEED DIFFERENT PARTITION FOR DIFFERENT CONSUMER SERVICE(MICROSERVICE)
+    -> FOR EACH PARTITION AN OFFSET IS MAINTAIN AT SERVICE LEVEL
+    -> THE CONSUMER COMMITS A MESSAGE AND KAFKA UPDATE THE OFFSET
+    -> IF A CONSUMER IS BLOCKED , THE CLIENT CAN SEND THAT MESSAGE TO DIFFERENT QUEUE TO PROCESS IT LATER
+    -> HELPS WHEN WE DEAL WITH HIGH THROUGHPUT MESSAGE AS IT HELPS TO PARTITION THE MESSAGE AMONG VARIOUS CONSUMER
+    -> IT is designed as horizaontal scaling
+    -> message in kafka stay until its retension preiod is over or size limit is crossed. this helps to retry or
+    change the message as per the need or add need consumer when needed.

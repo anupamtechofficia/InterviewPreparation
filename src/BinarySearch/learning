@@ -1,0 +1,53 @@
+in binary search
+1) always use start = mid+1 other wise case like start = 2 and end = 3 will get stuck as mid will always be 2
+
+2)
+also in binary search  when while lops end as start = end+1 (start becomes end +1 as we apply while loop as i<=j)
+this means the number we are trying to search will be between start and end where end < start. that means start will be
+greater then k and end will be less then k
+
+
+1, 4, 5, 6, 7, 10
+
+sreach 8
+
+i = 0;
+j  = 5
+
+mid = 2
+
+i = 3
+j = 5
+
+mid = 4
+
+i = 5
+j = 5
+
+mid = 5
+
+i = 5
+j = 4
+
+3)
+to find number in biotonic array
+1) find max in biotonic array
+2) apply binary sarch in both end
+
+
+4)
+
+use while(i<=j) only if j= mod-1 and i = mid +1
+else i/j = mid use while(i<j) because when i == j mid is always = j
+
+5) start = mid + 1 end = mid should use >= for start
+
+
+another way of to find mid when start and end is very large number
+
+int guess = (start & end) + ((start ^ end) >> 1);
+
+
+
+
+

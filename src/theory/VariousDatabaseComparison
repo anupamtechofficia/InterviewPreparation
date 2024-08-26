@@ -1,0 +1,50 @@
+DynaBO db
+
+Primary Index = partition key + optional range key
+
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html
+
+all item with same partition key is stored in same shared with order as per  range key
+
+Secondary Index: GLOBAL SI(different partition key then Primary Index + sort key ) + Local SI (same partition key then Primary Index
+ + different sort key)
+
+ Secondary Index: doesn't need to be unique
+
+GLOBAL SI  Max = 20 extra cost is informed in GSI as it create a separate table to store GSI data.
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html
+
+Local SI  = 5 local si is stored with an partition
+
+cons:
+ aws managed
+
+Drawback : cannot create index on nested object attributes
+
+Mongo:
+
+Total index = 64
+index need not to be always have primary / partition key
+index may or may not be unique to make it unique use { unique: true } )
+sharking key (combination of various attribute allowed) needs to be unique
+
+Indices are stored on the individual shard. This goes for both the shard key and all other indices.
+
+The mongos holds a cache of so called key ranges of the shard key for each shard.
+The key ranges are stored at the config servers which will be contacted by the mongos instances on certain
+occasions to retrieve those key ranges and their associated shards.
+The key ranges are basically a dictionary of shard key values and the name of the shard on which
+the document with the respective shard key lives on.
+
+https://stackoverflow.com/questions/29366075/where-the-mongodb-sharded-collection-index-info-stored#:~:text=Indices%20are%20stored%20on%20the,shard%20key%20for%20each%20shard.
+
+
+Pros : can create index on nested object attributes
+
+
+
+graph db
+
+https://dgraph.io/blog/post/db-sharding/
+
+

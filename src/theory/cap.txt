@@ -1,0 +1,102 @@
+https://stackoverflow.com/questions/36404765/why-isnt-rdbms-partition-tolerant-in-cap-theorem-and-why-is-it-available
+
+when a node is not able to communicate with the cluster it has three option
+
+reply -> AP
+If it reply that means it ensure AP but it is not consistent because it must not be having latest value.
+either slave returing the non updated value or all the disconnect salves has been choosen as a new master.
+EXAMPLE:  CASANDRA,
+
+https://medium.com/geekculture/system-design-solutions-when-to-use-cassandra-and-when-not-to-496ba51ef07a
+
+https://www.youtube.com/watch?v=Gx-pmH-b5mI
+
+It is mostly worked in master less architecture where if two node stops working they will still able to serve but
+the value will not be consistent as they are not able to communicate. like casandra
+In case of master - slave here any slave is choosen as new master without any downtime which result into
+inconsistent state.
+
+
+
+not reply -> CP
+it accept the query but doesn't reply means it is consistent but not avalaible
+example : Mongo, REDIS, dynamo
+
+in mongo is master gets down the secondary node with most recent operation becomes master and rest of the nodes
+needs to match with master. during this time the cluster remains unavaiable. so it is CP
+This system mostly happen with master - slave architecture
+https://www.ibm.com/topics/cap-theorem#:~:text=Relative%20to%20the%20CAP%20theorem,receives%20all%20the%20write%20operations.
+
+
+
+shutdown -> CA
+if it shutdown that will ensure consistency and availablity as the request will never go to it. but then it will
+not be partial Tolerance.
+example: MYSQL
+The system is consistent and available until all the nodes are online and no partition tolerence occur.
+If partition happens the system may not remain consistence
+
+MOST OF THE MASTER-SLAVE SYSTEM IS CP
+IF IT HAS NO MASTER CONCEPT IT WILL BE AP becuase then in case of any instance goes down the request goes to other
+node it will give wrong result
+
+
+https://stackoverflow.com/questions/59511275/redis-availability-and-cap-theorem
+
+
+0
+
+CA is not practical, but I don't see any issues with the statement of the CAP theorem.
+CA simply means the system can offer both consistency and availability only when there is no network partition issue.
+However, when there is a network partition issue, the system cannot function properly (e.g., it may eventually lose availability or consistency); otherwise, it's CAP, not CA.
+
+What would be an example of a CA system? Just something like what @João Matos mentioned:
+the node can shut down itself when it cannot communicate with others.
+In an extreme case, all nodes other than the master node shut down themselves, and eventually,
+ the master node fails for some reason, causing the system to fail (it is no longer CA).
+
+
+
+ Q = 2N+1
+ Q = NO OF NODES
+ N = NO OF FAILURE ALLOWED
+
+
+ R(MIN READ Quorum) + W(MIN WRITE Quorum) > N - STRONG CONSISTENCY
+
+
+ https://stackoverflow.com/questions/25502410/two-nodes-mongodb-replica-set-without-arbiter
+
+ if cluster have 2 node in with 1 master and 1 slave and if slave fails what happens?
+ bY DEAFULT master will also fail because it will not have the majority i.e in nodes = 2 majority > nodes/2 = 2.
+
+
+ So ideally odd numbers of nodes should be choosed to make a cluster
+ The node with latest operation logs is chosen as master and other try to update themself corresponding to new master
+
+
+ refernce
+ https://stackoverflow.com/questions/72711353/benefits-of-leader-follower-over-masterless
+
+
+
+Mongo,Redis,Zookeeper, SQL - master slave
+Dynamo = multi master https://arpitbhayani.me/blogs/multi-master-replication/
+CASANDRA, DYNAMO - MASTER LESS
+
+
+https://bikas-katwal.medium.com/mongodb-vs-cassandra-vs-rdbms-where-do-they-stand-in-the-cap-theorem-1bae779a7a15
+
+QUORAM
+
+
+LINEALIZATION CONSISTENCY : if operation b happens after operation a . b will always see the operaton done by a
+
+SEQUENTIAL CONSISTENCY : this type of consistency is lower then LINEALIZATION. here if a operation comes before b.
+it will make sure b operation is always executed after a
+ATOMATICITY : All operation should be done or all failed
+
+
+
+
+

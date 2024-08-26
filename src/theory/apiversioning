@@ -1,0 +1,21 @@
+URI Path Versioning
+
+         adding version in path
+
+Query Parameters Versioning
+
+        adding version using query param
+        cons: difficult to divert call based on query param
+
+
+Custom Header Versioning
+
+        adding extra header to include version
+
+        cons: need of adding extra header field
+
+
+Content Negotiation Versioning
+
+        accept type versionong
+

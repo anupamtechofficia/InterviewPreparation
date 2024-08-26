@@ -1,0 +1,51 @@
+https://www.macrometa.com/distributed-data/sharding-vs-partitioning
+
+https://www.geeksforgeeks.org/vertical-partitioning-vs-horizontal-partitioning/
+
+
+When to partition a table?
+Here are some suggestions for when to partition a table:
+
+Tables greater than 2 GB should always be considered as candidates for partitioning.
+Tables containing historical data, in which new data is added into the newest partition. A typical example is a historical table where only the current month's data is updatable and the other 11 months are read only.
+When the contents of a table need to be distributed across different types of storage devices.
+
+vertical-partitioning - means dividing colm into multiple table
+
+example :
+employee table
+employid name image
+
+employeeIngo
+employeId, name
+
+employeeImage
+employeId, image
+
+This helps to divide the table as frequently and less frequently data
+improves i/o operation and faster query and load on table
+
+horizontal-partitioning - means dividing rows into multiple table
+
+example :
+employee table
+employid name image
+
+employee table
+employeId, name
+
+employee table
+employeId, name
+
+This improve query performance
+
+sharding : sharding is horizontal scaling using different nodes or machine where each machine has cpu/storage
+
+
+consistent hashing:
+
+https://www.toptal.com/big-data/consistent-hashing#:~:text=according%20to%20Wikipedia).-,Consistent%20Hashing%20is%20a%20distributed%20hashing%20scheme%20that%20operates%20independently,without%20affecting%20the%20overall%20system.
+
+
+
+

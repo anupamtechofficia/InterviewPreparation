@@ -1,0 +1,8 @@
+
+
+mostly +1 is done using dp[i-1][j-1] or dp[i-1][j-weight]
+and compare is done useing dp [i][j] = Math.max(dp[i-1][j], dp[i][j-1])
+
+
+
+

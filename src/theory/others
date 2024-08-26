@@ -1,0 +1,9 @@
+ Number of threads = Number of Available Cores * (1 + Wait time / Service time)
+
+
+hashing is one way encryption
+encryption is of two type
+   1. Symmetric: Use same key for encryption and decruption
+   2. Asymetric encryption : public key is used for encryption
+                             private key is used for decryption
+encoding :

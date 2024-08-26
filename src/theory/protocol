@@ -1,0 +1,21 @@
+application layer protocol
+
+HTTP(TCP) , WEB SOCKET(TCP) , SMTS (TCP), VOIP(UDP), RTMP(TCP FOR VIDEO STREAM )
+
+Transport Layer Protocl
+TCP - SECURE , RELIABLE, SLOW (BOOLING , PAYMENTS ETC) SLOW BECAUSE THREE WAY COMMUNCATION REQUEST, DATA SENT, ACK
+UDP - UNSECURE , UNRELIABLE,  SLOW (LIVE MATCH AS SOME DATA LOSS IS IGNORED)
+
+
+Popular CDNs for live video streaming include Akamai, Cloudflare, and Fastly.
+
+LIVE STREAM PROTOCOL
+RTMP(REAL TIME MESSAGING PROTOCAL) -  low-latency streaming require high bandwidth
+HLS - HTTP LIVE STREAM -  LESS QUALITY WITH LESS INTERNET BANDWIDTH
+
+
+https://medium.com/@interviewready/designing-a-live-video-streaming-system-like-espn-14c8b3ff16c3
+
+HLS (HTTP Live Streaming) (for iPhone) or DASH (Dynamic Adaptive Streaming over HTTP) (for other operating systems).
+
+

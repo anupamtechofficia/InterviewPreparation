@@ -1,0 +1,40 @@
+index is on time
+
+by default we don't have way to create index on tags and field
+
+
+
+tags is
+
+https://docs.influxdata.com/influxdb/cloud-serverless/write-data/best-practices/schema-design/
+
+components in in flux db schema
+
+1. Bucket: Named location where time series data is stored. In the InfluxDB SQL implementation,
+a bucket is synonymous with a database. A bucket can contain multiple measurements.
+
+2. measurement - string (example : view)
+3. tags : identifier (key value pair)
+   example:
+   companyId : "abc"
+   addId: "xyz"
+4. field support datatype like int , long double etc
+   count : integer
+
+   recommend :
+
+   home,location=kitchen,sensor_model=A612,sensor_id=1726ZA temp=72.1
+   home,location=bath,sensor_model=A612,sensor_id=2635YB temp=71.8
+   here location, sensor_model , sensor_id is tag
+   temp is field
+   home is measurement name
+
+
+   max total column allowed (tag, filed, measurement ) =  200
+
+
+   sharding is done using time
+   shard 1 - day 1
+   shard 2 - day 2
+   shard 3 - day 3
+

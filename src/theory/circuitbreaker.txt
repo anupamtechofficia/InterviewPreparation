@@ -1,0 +1,30 @@
+https://medium.com/@minadev/circuit-breaker-pattern-in-microservices-9568320f2059#:~:text=Circuit%20Breaker%20is%20a%20design,tolerance%20of%20a%20distributed%20system.
+
+
+ Resilience4j:
+
+ Key features of Resilience4j include:
+
+ Retry: It allows you to define retry strategies for failed operations, and specify how many times an operation should be retried.
+ Rate Limiter: This allows you to control the traffic to some parts of your application by limit the rate of requests to a service to prevent overloading them.
+ Fallback: It allows you to define fallback functions or responses when an operation fails and gracefully shut down and improve user experience.
+ Functional programming:
+ It designed with Functional programming and support Asynchronous, it can be used for both synchronous and asynchronous applications.
+ Besides, It allows non-blocking and reactive programming.
+
+
+
+ Closed:
+ In this state, the circuit breaker allows normal service communication, and requests go through to the service.
+ Circuit breaker monitors the responses from the service for errors. If the responses are successful with no issues, it remains in the closed state.
+
+ Open:
+ When the number of failures reaches a threshold, the circuit breaker switches to the open state, preventing requests from reaching the service and providing a fallback response.
+ (Threshold Value like 5 failures within 10 seconds)
+
+ Half-Open:
+ Once the timeout or reset interval passes, the circuit breaker goes to the “Half-Open” state.
+ It allows a limited number of test requests to pass through to the service to see if the service has recovered or not.
+ If the test requests succeed, it means the service has recovered and the circuit breaker goes back to “Closed” state.
+ If any of the test requests fails, it means the service has still issues and the circuit breaker goes to “Open” state to block further requests.
+

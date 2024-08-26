@@ -1,0 +1,89 @@
+https://www.youtube.com/watch?v=EUV-m9x5pVo
+
+https://preparingforcodinginterview.wordpress.com/2019/08/25/zookeeper-vs-redis/
+
+
+base64
+sha256
+
+1)
+
+zooker has ZNODE AND EACH NODE CAN STORE UPTO 1 MB DATA
+node can be persistent, emperial and sequential
+sequential is used for locking and leader selection
+persistent node will be alive if processe is killed
+emperial node will die if processes is killed
+
+2)
+zookeeper is write slow and read fast\
+zookeeper write all the data to all the node to make it consistent
+zookeeper provided sequential consistent that means if A operation is executed first all the replica will
+executed operation A and then other operation which came after B.
+zookeeper is ideal choice to design distributed locks
+
+USACASE:
+
+1) IT IS KIND OF A FILE SYSTEM
+WHERE each NODE IS
+
+
+2) IT IS USE FOR MANAGING DISTRIBUTED LOCKING
+https://dzone.com/articles/distributed-lock-using
+
+3) Leader selection (https://medium.com/@minhaz1217/leader-election-in-a-distributed-system-using-zookeeper-b562e6d79855)
+
+ Zookeeper provides strong consistency guarantees.
+ It ensures that all clients will observe the same order of updates and that all updates will be reflected
+ in the system within a known time frame.
+
+
+
+REDIS:
+
+Redis offers eventual consistency, where updates to the data may take some time to propagate across all replicas.
+It allows users to choose between different replication models, including asynchronous and synchronous replication.
+IT WORKS ON SINGLE THREAD
+
+1. USE FOR INCREMENTING VALUE (COMMAND : INCR, INCRBY, DECR) : IDEAL FOR RATE LIMITING
+2. USED FOR PUB SUB MODEL
+3. USE TO CACHE DATA
+4. DISTRIBUTION LOCK with complex setup
+
+
+
+Support for Watchers: Redis offers an event notification mechanism called "pub/sub" that allows clients to
+subscribe to specific channels and receive updates in real-time. While it provides a basic form of notification,
+it lacks more advanced features like conditional event triggering or filtering based on data changes.
+Zookeeper, on the other hand, provides powerful watchers that allow clients to be notified of changes to znodes,
+enabling reactive programming and efficient event-driven processing.
+
+Scalability and Fault Tolerance: Redis supports horizontal scalability through sharding, allowing data to be
+distributed across multiple nodes. It provides mechanisms for replication, failover, and automatic partitioning.
+Zookeeper is designed to provide high availability and fault tolerance by using a replicated ensemble of servers.
+It ensures that a majority of servers need to be available to maintain service availability and data consistency.
+
+
+https://stackshare.io/stackups/redis-vs-zookeeper
+
+
+https://stackshare.io/stackups/redis-vs-zookeeper
+
+
+memcache
+-> doesn't have replica logic by default i.e doesn't support master slave
+-> it is multi thread so for large data set is is more fast
+-> doesn't support pub sub model by default
+-> doesn't support shading more good for vertical scaling as it is multi threaded
+
+
+
+
+
+
+
+
+
+
+
+
+

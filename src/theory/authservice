@@ -1,0 +1,9 @@
+referesh tokem: is send to auth service to fectch new access token. referesh token mostly used to replace the stratergy to save
+credential. they are kind of long live token
+
+access token : access token is created by server that store the information that which user has access to which resource
+and its validity, access token has less validity then referesh token.
+
+session token/: this is bascially used to store the information when user loged in via website. so a session is created between
+client and server. session token is stored in cookie of the website and it remains untill the user logout.
+on reguarly basis client check the local stored session information with server to make sure session is not expired.
